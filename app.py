@@ -1,28 +1,16 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+
 from flask import Flask , render_template
-import torch
-from transformers import pipeline
+
 
 app = Flask(__name__)
-
-classifier = pipeline("sentiment-analysis")
-value = classifier(
-    [
-        "I've been waiting for a HuggingFace course my whole life.",
-        "I hate this so much!",
-    ]
-)
-
 
 
 @app.route('/')
 def index():
-  value = classifier(
-    [
-        "I've been waiting for a HuggingFace course my whole life.",
-        "I hate this so much!",
-    ]
-)
-  return render_template('index.html', script_value=value)
+  return render_template('index.html',text = "Hello World")
 
 if __name__ == '__main__':
   app.run(debug=True)
