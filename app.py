@@ -1,19 +1,53 @@
-#import matplotlib.pyplot as plt
-#import pandas as pd
-#import numpy as np
+from flask import Flask, request, render_template
+import pandas as pd  # For DataFrame creation
+from keras.models import load_model  # For model loading
 
-from flask import Flask , render_template
-
+# Load the saved model (replace with the actual path)
+model = load_model('my_model.h5')
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def index():
-  return render_template('index.html',text = "Hello World")
+    return render_template('multiple_inputs.html')  # Render the form template
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    try:
+        # Extract features from the form data
+        feature1 = float(request.form['feature1'])
+        feature2 = float(request.form['feature2'])
+        feature3 = float(request.form['feature3'])
+        feature4 = float(request.form['feature4'])
+        feature5 = float(request.form['feature5'])
+        feature6 = float(request.form['feature6'])
+        feature7 = float(request.form['feature7'])
+        feature8 = float(request.form['feature8'])
+        feature9 = float(request.form['feature9'])
+        feature10 = float(request.form['feature10'])
+        feature11 = float(request.form['feature11'])
+        feature12 = float(request.form['feature12'])
+        feature13 = float(request.form['feature13'])
+
+        # Create a DataFrame from features
+        user_data = pd.DataFrame({'feature1': [feature1], 'feature2': [feature2], 'feature3': [feature3], 'feature4': [feature4], 'feature5': [feature5], 'feature6': [feature6], 'feature7': [feature7], 'feature8': [feature8], 'feature9': [feature9], 'feature10': [feature10], 'feature11': [feature11], 'feature12': [feature12], 'feature13': [feature13]})
+
+        # Preprocess data if necessary (replace with your preprocessing logic)
+        # ... your preprocessing steps ...
+
+        # Convert DataFrame to NumPy array
+        user_data_array = user_data.to_numpy()
+
+        # Make predictions
+        predictions = model.predict(user_data_array)
+
+        # Process predictions (replace with your logic based on model output)
+        processed_predictions = "Your model's prediction: " + str(predictions[0])  # Assuming single prediction
+
+        return render_template('response.html', prediction=processed_predictions)  # Render response template with prediction
+
+    except Exception as e:
+        return render_template('error.html', error=str(e)), 400  # Handle errors and return appropriate status code
 
 if __name__ == '__main__':
-  app.run(debug=True)
-
-
-
+    app.run(debug=True)
