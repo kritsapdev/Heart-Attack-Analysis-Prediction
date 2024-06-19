@@ -1,24 +1,23 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+# Import sklearn for split data
 from sklearn.model_selection import train_test_split
-
+# Import EarlyStopping for early stopping technic
 from keras.callbacks import EarlyStopping
-# Import `Sequential` from `keras.models`
+# Import `Sequential` from `keras.models` for create Sequential model
 from keras.models import Sequential
-
-# Import `Dense` from `keras.layers`
+# Import `Dense` from `keras.layers` for create layer
 from keras.layers import Dense
 
+# Import data
 df = pd.read_csv("dataset\heart.csv")
 
-
+# Choose columns for independent(X) and dependent(y) 
 X = df.iloc[:, 0:13]
 y = df.iloc[:, 13:14]
-
+# Split data to train and test for X and y
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 15)
-
-
 
 # Initialize the constructor
 model = Sequential()
@@ -63,7 +62,7 @@ optimizer ='adam', metrics =['accuracy'])
 
 
 # Define the EarlyStopping callback
-early_stopping = EarlyStopping(monitor='val_accuracy', patience=350)  # Monitor validation accuracy, stop after 5 epochs with no improvement
+early_stopping = EarlyStopping(monitor='val_accuracy', patience=350)  # Monitor validation accuracy, stop after 350 epochs with no improvement
 
 # Compile the model
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])  # Adjust loss and optimizer as needed
@@ -71,24 +70,10 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 # Train the model with EarlyStopping
 model.fit(X_train, y_train, epochs=500, validation_data=(X_test, y_test), callbacks=[early_stopping])
 
-
-
-# Training Model
-#model.fit(X_train, y_train, epochs = 500,
-           #batch_size = 1, verbose = 1)
-
 # Predicting the Value
-
-X_ans1 = df.iloc[199:202, 13:14]
-
-
-X_test = df.iloc[199:202, 0:13]
-
 y_pred = model.predict(X_test)
-print(f'answer = {X_ans1}')
-print(f'X_test = {X_test}')
-print(f'predict = {y_pred}')
 
+#Save model .h5 for using in Flask
 model.save('my_model.h5')
 
 
