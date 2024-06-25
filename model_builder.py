@@ -23,25 +23,14 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, rando
 model = Sequential()
 
 # Add an input layer
-model.add(Dense(13, activation ='relu', input_shape =(13, )))
+model.add(Dense(16, activation ='relu', input_shape =(13, )))
 
 # Add one hidden layer
-model.add(Dense(12, activation ='relu'))
+model.add(Dense(32, activation ='relu'))
 
 # Add one hidden layer
-model.add(Dense(12, activation ='relu'))
+model.add(Dense(64, activation ='relu'))
 
-# Add one hidden layer
-model.add(Dense(12, activation ='relu'))
-
-# Add one hidden layer
-model.add(Dense(12, activation ='relu'))
-
-# Add one hidden layer
-model.add(Dense(12, activation ='relu'))
-
-# Add one hidden layer
-model.add(Dense(12, activation ='relu'))
 
 # Add an output layer
 model.add(Dense(1, activation ='sigmoid'))
@@ -72,6 +61,7 @@ model.fit(X_train, y_train, epochs=500, validation_data=(X_test, y_test), callba
 
 # Predicting the Value
 y_pred = model.predict(X_test)
+
 
 #Save model .h5 for using in Flask
 model.save('my_model.h5')
