@@ -11,21 +11,22 @@ This project presents a web application that employs deep learning to predict th
 
 <h2>Features:</h2>
 
-Predicts the risk of heart attacks based on input data.
-Provides a user-friendly interface for data entry and prediction visualization.
-Leverages a trained Keras model for accurate predictions.
-Ready for deployment (AWS deployment details to be added in a this document later).
+<li>Predicts the risk of heart attacks based on input data.</li>
+<li>Provides a user-friendly interface for data entry and prediction visualization.</li>
+<li>Leverages a trained Keras model for accurate predictions.</li>
+<li>Ready for deployment (AWS deployment details to be added in a this document later).</li>
 <h2>Installation:</h2>
 
-Prerequisites: Ensure you have Python (3.x) and pip installed.
-Virtual Environment (Recommended): Create a virtual environment using python -m venv .venv and activate it: source .venv/bin/activate (Windows: .venv\Scripts\activate).
-Install Dependencies: Run pip install -r requirements.txt.
-Usage:
-Activate Environment : source .venv/bin/activate (Windows: .venv\Scripts\activate).
-Run the App: Navigate to the project directory and start the Flask development server: python app.py.
-Access the App: Open http://localhost:5000/ in your web browser.
-Provide Patient Data: Enter relevant patient information through the provided interface.
-Get Predictions: Click the "Send" button to receive the predicted risk of a heart attack.
-Deployment (AWS):
+<li>Prerequisites: Ensure you have Python (3.x) and pip installed.</li>
+<li>Virtual Environment (Recommended): Create a virtual environment using python -m venv .venv and activate it: source .venv/bin/activate (Windows: .venv\Scripts\activate).</li>
+<li>Install Dependencies: Run pip install -r requirements.txt.</li>
+<h2>Usage:</h2>
+<li>Activate Environment : source .venv/bin/activate (Windows: .venv\Scripts\activate).</li>
+<li>Run the App: Navigate to the project directory and start the Flask development server: python app.py.</li>
+<li>Access the App: Open http://localhost:5000/ in your web browser.</li>
+<li>Provide Patient Data: Enter relevant patient information through the provided interface.</li>
+<li>Get Predictions: Click the "Send" button to receive the predicted risk of a heart attack.</li>
+
+<h2>Deployment (AWS):</h2>
 
 (Detailed instructions will be provided in this document later.)
