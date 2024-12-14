@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template , jsonify
 import pandas as pd
 from keras.models import load_model
-
+#test
 # Load the saved model
 model = load_model('my_model.h5')
 
@@ -37,6 +37,7 @@ def predict():
 
         # Convert DataFrame to NumPy array
         user_data_array = user_data.to_numpy()
+        
 
         # Make predictions
         predictions = model.predict(user_data_array)
